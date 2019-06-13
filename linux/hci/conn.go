@@ -8,10 +8,10 @@ import (
 	"io"
 	"net"
 
-	"github.com/go-ble/ble"
-	"github.com/go-ble/ble/linux/hci/cmd"
-	"github.com/go-ble/ble/linux/hci/evt"
 	"github.com/pkg/errors"
+	"github.com/AWildBeard/ble"
+	"github.com/AWildBeard/ble/linux/hci/cmd"
+	"github.com/AWildBeard/ble/linux/hci/evt"
 )
 
 // Conn ...
