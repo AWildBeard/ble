@@ -117,6 +117,17 @@ type HCI struct {
 	done chan bool
 }
 
+// GetHandles returns an array of connection handles for the clients connected
+func (h *HCI) GetHandles() []uint16 {
+	h.muConns.Lock()
+	var handles = make([]uint16, 0, len(h.conns))
+	for key := range h.conns {
+		handles = append(handles, key)
+	}
+	h.muConns.Unlock()
+	return handles
+}
+
 // Init ...
 func (h *HCI) Init() error {
 	h.evth[0x3E] = h.handleLEMeta
