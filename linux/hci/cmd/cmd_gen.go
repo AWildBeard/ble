@@ -365,6 +365,27 @@ func (c *ReadAuthenticatedPayloadTimeoutRP) Unmarshal(b []byte) error {
 	return unmarshal(c, b)
 }
 
+type SetDataLengthCommand struct {
+	ConnectionHandle uint16
+	TxOctets         uint16
+	TxTime           uint16
+}
+
+func (sdl *SetDataLengthCommand) String() string { return "Set Data Length Command (0x22)" }
+
+func (sdl *SetDataLengthCommand) OpCode() int { return 0x8<<10 | 0x22 }
+
+func (sdl *SetDataLengthCommand) Len() int { return 6 }
+
+func (sdl *SetDataLengthCommand) Marshal(b []byte) error { return marshal(sdl, b) }
+
+type SetDataLengthCommandRP struct {
+	Status           uint8
+	ConnectionHandle uint16
+}
+
+func (sdlrp *SetDataLengthCommandRP) Unmarshal(b []byte) error { return unmarshal(sdlrp, b) }
+
 // WriteAuthenticatedPayloadTimeout implements Write Authenticated Payload Timeout (0x01|0x007C) [Vol 2, Part E, 7.3.94]
 type WriteAuthenticatedPayloadTimeout struct {
 	ConnectionHandle            uint16

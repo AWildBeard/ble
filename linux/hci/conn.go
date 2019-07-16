@@ -184,6 +184,11 @@ func (c *Conn) Write(sdu []byte) (int, error) {
 	return sent, nil
 }
 
+// Handle returns the conneciton handle associated with the connection
+func (c *Conn) Handle() uint16 {
+	return c.param.ConnectionHandle()
+}
+
 // writePDU breaks down a L2CAP PDU into fragments if it's larger than the HCI buffer size. [Vol 3, Part A, 7.2.1]
 func (c *Conn) writePDU(pdu []byte) (int, error) {
 	sent := 0

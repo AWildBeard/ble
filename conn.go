@@ -18,6 +18,9 @@ type Conn interface {
 	// LocalAddr returns local device's address.
 	LocalAddr() Addr
 
+	// Handle returns the underlying bluetooth firmware connection handle
+	Handle() uint16
+
 	// RemoteAddr returns remote device's address.
 	RemoteAddr() Addr
 
